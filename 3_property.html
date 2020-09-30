@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //构造函数
+    function Student(sname,sage){
+      this.sname=sname;
+      this.sage=sage;
+    }
+    //所有学生都来自初一2班，所以应该在原型对象中添加一个className属性保存所有学生统一的班级
+    Student.prototype.className="初一2班";
+
+    //创建lilei
+    var lilei=new Student("Li Lei",11);
+    //创建hmm
+    var hmm=new Student("Han Meimei",12);
+    console.log(lilei);
+    console.log(hmm);
+    //读取李磊的姓名和班级
+    console.log(lilei.sname, lilei.className);
+    //读取hmm的姓名和班级
+    console.log(hmm.sname, hmm.className);
+    //李磊想改名叫李晓磊
+    lilei.sname="Li Xiaolei";
+    console.log(lilei);
+    //第一年，输出两个人的班级
+    console.log(lilei.className, hmm.className);
+    //过了一年，两个人同时升级到初二2班
+    //错误: 用某个一个子对象，试图修改原型对象中的共有属性值
+    lilei.className="6年级2班";
+    //正确: 
+    //Student.prototype.className="初二2班";
+    //再输出两个人的班级，希望两人都是初二2班
+    console.log(lilei.className, hmm.className);
+    //又过了一年，大家一起升初三2班
+    Student.prototype.className="初三2班";
+    console.log(lilei.className, hmm.className);
+  </script>
+</body>
+</html>

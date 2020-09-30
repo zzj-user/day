@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //项目中，经常需要对各种数组内容求和
+    //应该自定义一个sum函数，强行添加到数组类型的原型对象中
+    Array.prototype.sum=function(){
+      console.log(`调用我自己定义的sum()函数！`);
+      //this->将来调用这个sum()函数的.前的某个数组
+      //比如，将来arr1.sum()，this->arr1
+      //     将来arr2.sum(), this->arr2
+      //对当前正在调用sum()的某个数组中所有元素求和
+      var result=0;
+      //遍历数组中每个元素
+      for(var i=0;i<this.length;i++){
+        result+=this[i]
+      }
+      //错误: in会把sum()函数本身的定义也遍历进来
+      // for(var key in this){
+      //   result+=this[key]
+      // }
+      return result;
+    }
+    console.log(Array.prototype);
+    
+    //希望: 
+    var arr1=[1,2,3];
+    var arr2=[1,2,3,4,5];
+    console.log(arr1.sum())//6; //报错: sum不是一个函数
+    console.log(arr2.sum())//15
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //构造函数
+    function Student(sname,sage){
+      this.sname=sname;
+      this.sage=sage;
+    }
+    //因为今后所有学生对象都要能自我介绍，所以，应该在学生类型的构造函数的原型对象中强行添加一个intr()方法。供将来所有学生共用！
+    Student.prototype.intr=function(){
+      console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+    }
+    console.dir(Student);
+
+    //想创建lilei
+    var lilei=new Student("Li Lei",11);
+    //想创建hmm
+    var hmm=new Student("Han Meimei",12);
+    
+    console.log(lilei);
+    console.log(hmm);
+    lilei.intr();
+    hmm.intr();
+    //亲自鉴定: 
+    //判断李磊的爹是不是构造函数妈妈的原型对象
+    console.log(lilei.__proto__==Student.prototype);//true
+    //判断hmm的爹是不是构造函数妈妈的原型对象
+    console.log(hmm.__proto__==Student.prototype);//true
+    //判断lilei的爹和hmm的爹是不是同一个人
+    console.log(lilei.__proto__==hmm.__proto__);//true
+  </script>
+</body>
+</html>

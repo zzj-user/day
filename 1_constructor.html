@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //想创建两个学生对象: lilei和hmm
+    //定义所有学生类型的对象统一的属性结构: 
+    //               形参变量永远可以改名，不必和属性名一致
+    //               但是强烈建议形参名和属性名保持一致
+    function Student(sname,sage){
+      //固定所有学生都有sname和sage两个属性，都要会做自我介绍intr()
+      this.sname=sname;
+      this.sage=sage;
+      this.intr=function(){
+        console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+      }
+    }
+    //想创建lilei
+    var lilei=new Student("Li Lei",11);
+    console.log(lilei);
+    lilei.intr();
+    //想创建hmm
+    var hmm=new Student("Han Meimei",12);
+    console.log(hmm);
+    hmm.intr();
+  </script>
+</body>
+</html>
